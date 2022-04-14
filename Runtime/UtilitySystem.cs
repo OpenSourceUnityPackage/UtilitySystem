@@ -2,67 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class UtilitySystem : MonoBehaviour
+namespace UtilitySystem
 {
-    [SerializeField]
-    List<Action> actions = new List<Action>();
-    public List<Action> Actions
+
+    public class UtilitySystem : MonoBehaviour
     {
-        get { return actions; }
-    }
-
-
-    [SerializeField]
-    Blackboard bb;
-
-    Action currentAction = null;
-
-    public Action CurrentAction
-    {
-        get { return currentAction; }
-    }
-
-
-
-    private void Start()
-    {
-        if (currentAction != null)
+        [SerializeField]
+        List<Desire> actions = new List<Desire>();
+        public List<Desire> Desires
         {
-            currentAction.StartAction();
+            get { return actions; }
         }
-    }
 
-    private void Update()
-    {
-        float highestUtility = 0f;
-        Action newAction = null;
-        foreach (Action action in actions)
+
+        [SerializeField]
+        Blackboard bb;
+
+        Desire currentDesire = null;
+
+        public Desire CurrentDesire
         {
-            float utility = action.EvaluateUtility(bb);
-            if (utility > highestUtility || (newAction != null && utility == highestUtility && action.priority > newAction.priority))
+            get { return currentDesire; }
+        }
+
+
+
+        private void Start()
+        {
+            if (currentDesire != null)
             {
-                newAction = action;
-                highestUtility = utility;
+                currentDesire.StartDesire();
             }
         }
 
-        if (newAction == null)
+        private void Update()
         {
-            newAction = actions[Random.Range(0, actions.Count)];
+            float highestUtility = 0f;
+            Desire newDesire = null;
+            foreach (Desire action in actions)
+            {
+                float utility = action.EvaluateUtility(bb);
+                if (utility > highestUtility || (newDesire != null && utility == highestUtility && action.priority > newDesire.priority))
+                {
+                    newDesire = action;
+                    highestUtility = utility;
+                }
+            }
+
+            if (newDesire == null)
+            {
+                newDesire = actions[Random.Range(0, actions.Count)];
+            }
+
+            if (newDesire != currentDesire)
+            {
+                if (currentDesire != null)
+                    currentDesire.EndDesire();
+
+                currentDesire = newDesire;
+                currentDesire.StartDesire();
+            }
+
+            // Call update atleast 1 time, even if StartDesire() has been called during the same frame
+            currentDesire.UpdateDesire();
         }
-
-        if (newAction != currentAction)
-        {
-            if (currentAction  != null)
-                currentAction.EndAction();
-
-            currentAction = newAction;
-            currentAction.StartAction();
-        }
-
-        // Call update atleast 1 time, even if StartAction() has been called during the same frame
-        currentAction.UpdateAction();
     }
+
 }

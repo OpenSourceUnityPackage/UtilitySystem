@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class Stat : MonoBehaviour
+namespace UtilitySystem
 {
-    [SerializeField]
-    private float ratio;
-    public float Ratio
+
+    [System.Serializable]
+    public class Stat : MonoBehaviour
     {
-        get { return ratio; }
-        set 
+        [SerializeField]
+        private float ratio;
+        public float Ratio
         {
-            ratio = Mathf.Clamp(value, 0, 1);
+            get { return ratio; }
+            set
+            {
+                ratio = Mathf.Clamp(value, 0, 1);
+            }
         }
-    }
-};
+    };
+
+}
