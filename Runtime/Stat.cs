@@ -3,22 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace UtilitySystem
+namespace UtilitySystem.Runtime
 {
-
     [System.Serializable]
-    public class Stat : MonoBehaviour
+    public class Stat
     {
-        [SerializeField]
-        private float ratio;
-        public float Ratio
+        public string Name;
+
+        [SerializeField] 
+        [Range(0f, 1f)]
+        private float value;
+
+        public float Value
         {
-            get { return ratio; }
-            set
-            {
-                ratio = Mathf.Clamp(value, 0, 1);
-            }
+            get { return value; }
+            set { this.value = Mathf.Clamp(value, 0, 1); }
+        }
+
+        public Stat(string name, float value)
+        {
+            Name = name;
+            Value = value;
+        }
+
+        public Stat(Utility utility)
+        {
+            Name = utility.Name;
+            Value = utility.Value;
         }
     };
-
 }

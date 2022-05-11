@@ -1,71 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-namespace UtilitySystem
+namespace UtilitySystem.Runtime
 {
-
-    public class UtilitySystem : MonoBehaviour
+    [System.Serializable]
+    public class UtilitySystem
     {
-        [SerializeField]
-        List<Desire> actions = new List<Desire>();
-        public List<Desire> Desires
+        [SerializeField] private List<Stat> _inputs = new List<Stat>();
+
+        [SerializeField] private List<Utility> _outputs = new List<Utility>();
+
+        public void Init(UtilitySystemData systemData)
         {
-            get { return actions; }
-        }
-
-
-        [SerializeField]
-        Blackboard bb;
-
-        Desire currentDesire = null;
-
-        public Desire CurrentDesire
-        {
-            get { return currentDesire; }
-        }
-
-
-
-        private void Start()
-        {
-            if (currentDesire != null)
+            _inputs = new List<Stat>();
+            for (int i = 0; i < systemData.inputs.Count; i++)
             {
-                currentDesire.StartDesire();
+                _inputs.Add(new Stat(systemData.inputs[i], 0f));
             }
+
+            _outputs = systemData.utilities;
         }
 
-        private void Update()
+        public void UpdateStats(Dictionary<string, float> inputs, bool allowPartialModifications = false)
         {
-            float highestUtility = 0f;
-            Desire newDesire = null;
-            foreach (Desire action in actions)
+            foreach (Stat input in _inputs)
             {
-                float utility = action.EvaluateUtility(bb);
-                if (utility > highestUtility || (newDesire != null && utility == highestUtility && action.priority > newDesire.priority))
+                if (inputs.ContainsKey(input.Name))
                 {
-                    newDesire = action;
-                    highestUtility = utility;
+                    input.Value = inputs[input.Name];
+                }
+                else if (!allowPartialModifications)
+                {
+                    Debug.LogWarning("Couldn't find input " + input.Name + " in given inputs");
                 }
             }
+        }
 
-            if (newDesire == null)
+        public void Update()
+        {
+            foreach (var output in _outputs)
             {
-                newDesire = actions[Random.Range(0, actions.Count)];
+                output.EvaluateUtility(_inputs);
+            }
+        }
+
+        public Utility GetHighestUtility()
+        {
+            if (_outputs.Count == 0) return null;
+
+            Utility max = _outputs[0];
+            for (int i = 1; i < _outputs.Count; i++)
+            {
+                if (_outputs[i].Value > max.Value)
+                    max = _outputs[i];
             }
 
-            if (newDesire != currentDesire)
-            {
-                if (currentDesire != null)
-                    currentDesire.EndDesire();
+            return max;
+        }
 
-                currentDesire = newDesire;
-                currentDesire.StartDesire();
-            }
+        public List<Utility> GetUtilities()
+        {
+            List<Utility> retVal = new List<Utility>(_outputs);
+            return retVal;
+        }
 
-            // Call update atleast 1 time, even if StartDesire() has been called during the same frame
-            currentDesire.UpdateDesire();
+        public List<Utility> GetUtilitiesSorted()
+        {
+            List<Utility> retVal = new List<Utility>(_outputs);
+            retVal.Sort((lhs, rhs) => rhs.Value.CompareTo(lhs.Value));
+            return retVal;
+        }
+
+        public List<Stat> GetInputs()
+        {
+            return _inputs;
         }
     }
-
 }
