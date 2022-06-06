@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.2.1...1.3.0) (2022-06-06)
+
+
+### Features
+
+* Can now change stats one by one ([571e914](https://github.com/OpenSourceUnityPackage/UtilitySystem/commit/571e914c86b6f2755a7f5b1340317da13ee48b67))
+
 ## [1.2.1](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.2.0...1.2.1) (2022-06-06)
 
 
