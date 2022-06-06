@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.3.0...1.3.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* Use LogWarning instead of Log ([13de230](https://github.com/OpenSourceUnityPackage/UtilitySystem/commit/13de230a30470eb1a427d87019d757e3d8580e83))
+
 # [1.3.0](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.2.1...1.3.0) (2022-06-06)
 
 
