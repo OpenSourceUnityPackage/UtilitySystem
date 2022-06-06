@@ -68,6 +68,17 @@ namespace UtilitySystemPackage
             return max;
         }
 
+        public Utility GetUtilty(string key)
+        {
+            if (_outputs.ContainsKey(key))
+                return _outputs[key];
+            else
+            {
+                Debug.Log($"UtilitySystem does not contain {key}");
+                return null;
+            }
+        }
+
         public Dictionary<string, Utility> GetUtilities()
         {
             return _outputs;
@@ -95,5 +106,17 @@ namespace UtilitySystemPackage
         {
             return _inputs;
         }
+        
+        public Stat GetStat(string key)
+        {
+            if (_inputs.ContainsKey(key))
+                return _inputs[key];
+            else
+            {
+                Debug.Log($"UtilitySystem does not contain {key}");
+                return null;
+            }
+        }
+
     }
 }
