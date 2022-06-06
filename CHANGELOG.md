@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.2.0...1.2.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* typo in GetUtility ([3f072fc](https://github.com/OpenSourceUnityPackage/UtilitySystem/commit/3f072fcd21e43476e9afbb1b4dbfb014fbd1a234))
+
 # [1.2.0](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.1.0...1.2.0) (2022-06-06)
 
 
