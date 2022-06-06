@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.0.2...1.1.0) (2022-06-06)
+
+
+### Features
+
+* Rework utilitySystem to use Dictionaries ([f4bbfca](https://github.com/OpenSourceUnityPackage/UtilitySystem/commit/f4bbfca35c8a8c9eedc97b97caa943ea49d8c0c4))
+
 ## [1.0.2](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.0.1...1.0.2) (2022-06-06)
 
 
