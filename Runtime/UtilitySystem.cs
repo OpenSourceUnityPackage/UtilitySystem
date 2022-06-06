@@ -43,6 +43,18 @@ namespace UtilitySystemPackage
             }
         }
 
+        public void SetStat(string key, float value)
+        {
+            if (_inputs.ContainsKey(key))
+            {
+                _inputs[key].Value = value;
+            }
+            else
+            {
+                Debug.Log("Couldn't find input " + key + " in given inputs");
+            }
+        }
+
         public void Update()
         {
             foreach (var output in _outputs.Values)
