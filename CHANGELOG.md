@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.0.1...1.0.2) (2022-06-06)
+
+
+### Bug Fixes
+
+* changed editor namespace ([dbd898c](https://github.com/OpenSourceUnityPackage/UtilitySystem/commit/dbd898caf5d8e3c5424d7c1f879698cf4b487185))
+
 ## [1.0.1](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.0.0...1.0.1) (2022-06-06)
 
 
