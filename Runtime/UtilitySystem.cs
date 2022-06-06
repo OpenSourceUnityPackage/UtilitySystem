@@ -68,13 +68,13 @@ namespace UtilitySystemPackage
             return max;
         }
 
-        public Utility GetUtilty(string key)
+        public Utility GetUtility(string key)
         {
             if (_outputs.ContainsKey(key))
                 return _outputs[key];
             else
             {
-                Debug.Log($"UtilitySystem does not contain {key}");
+                Debug.Log($"UtilitySystem does not contain the utility {key}");
                 return null;
             }
         }
@@ -113,7 +113,7 @@ namespace UtilitySystemPackage
                 return _inputs[key];
             else
             {
-                Debug.Log($"UtilitySystem does not contain {key}");
+                Debug.Log($"UtilitySystem does not contain the stat {key}");
                 return null;
             }
         }
