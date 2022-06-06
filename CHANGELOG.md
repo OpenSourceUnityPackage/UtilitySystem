@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.1.0...1.2.0) (2022-06-06)
+
+
+### Features
+
+* Added getUtility and getStat function ([c646058](https://github.com/OpenSourceUnityPackage/UtilitySystem/commit/c646058210011834a329ac98e84f1eeef832c140))
+
 # [1.1.0](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.0.2...1.1.0) (2022-06-06)
 
 
