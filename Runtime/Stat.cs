@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace UtilitySystem.Runtime
+namespace UtilitySystemPackage
 {
     [System.Serializable]
     public class Stat

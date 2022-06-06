@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace UtilitySystem.Runtime
+namespace UtilitySystemPackage
 {
     [CreateAssetMenu(fileName = "UtilitySystemData", menuName = "UtilitySystem/UtilitySystemData", order = 0)]
     public class UtilitySystemData : ScriptableObject

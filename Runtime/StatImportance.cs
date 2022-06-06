@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UtilitySystem.Runtime
+namespace UtilitySystemPackage
 {
     [System.Serializable]
     public class StatImportance
