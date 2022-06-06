@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/OpenSourceUnityPackage/UtilitySystem/compare/1.0.0...1.0.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* Changed namespace to help path aliasing ([93001ba](https://github.com/OpenSourceUnityPackage/UtilitySystem/commit/93001baf15001877b37bff086ffe9952de5ff894))
+
 # 1.0.0 (2022-06-06)
 
 
