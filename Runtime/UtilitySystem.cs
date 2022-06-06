@@ -51,7 +51,7 @@ namespace UtilitySystemPackage
             }
             else
             {
-                Debug.Log("Couldn't find input " + key + " in given inputs");
+                Debug.LogWarning("Couldn't find input " + key + " in given inputs");
             }
         }
 
@@ -86,7 +86,7 @@ namespace UtilitySystemPackage
                 return _outputs[key];
             else
             {
-                Debug.Log($"UtilitySystem does not contain the utility {key}");
+                Debug.LogWarning($"UtilitySystem does not contain the utility {key}");
                 return null;
             }
         }
@@ -125,7 +125,7 @@ namespace UtilitySystemPackage
                 return _inputs[key];
             else
             {
-                Debug.Log($"UtilitySystem does not contain the stat {key}");
+                Debug.LogWarning($"UtilitySystem does not contain the stat {key}");
                 return null;
             }
         }
