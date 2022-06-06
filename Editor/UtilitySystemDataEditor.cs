@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
 using UnityEditor;
 using UnityEngine;
-using UtilitySystemPackage;
 
-namespace UtilitySystem.Editor
+namespace UtilitySystemPackage
 {
     [CustomEditor(typeof(UtilitySystemData))]
     public class UtilitySystemDataEditor : UnityEditor.Editor
