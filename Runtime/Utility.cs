@@ -18,6 +18,8 @@ namespace UtilitySystemPackage
             set { this.value = Mathf.Clamp(value, 0, 1); }
         }
 
+        public float OneNegValue => 1 - value;
+
         [SerializeField]
         public List<StatImportance> statImportances;
 

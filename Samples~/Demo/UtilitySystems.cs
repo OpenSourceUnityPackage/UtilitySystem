@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UtilitySystem.Runtime;
+using UtilitySystemPackage;
 
 public class UtilitySystems : MonoBehaviour
 {
-    [SerializeField] public UtilitySystem.Runtime.UtilitySystem logicUtilitySystem;
+    [SerializeField] public UtilitySystem logicUtilitySystem;
     public UtilitySystemData logicData;
-    [SerializeField] public UtilitySystem.Runtime.UtilitySystem personalityUtilitySystem;
+    [SerializeField] public UtilitySystem personalityUtilitySystem;
     public UtilitySystemData personalityData;
 
     // Start is called before the first frame update
@@ -23,15 +23,9 @@ public class UtilitySystems : MonoBehaviour
     void Update()
     {
         logicUtilitySystem.Update();
-        var utilities = logicUtilitySystem.GetUtilities();
-        
-        var dict = new Dictionary<string, float>();
-        foreach (var utility in utilities)
-        {
-            dict[utility.Name] = utility.Value;
-        }
-        
-        personalityUtilitySystem.UpdateStats(dict, true);
+        var utilities = logicUtilitySystem.GetUtilitiesAsFloat();
+
+        personalityUtilitySystem.UpdateStats(utilities, true);
         personalityUtilitySystem.Update();
     }
 #if UNITY_EDITOR
@@ -43,12 +37,12 @@ public class UtilitySystems : MonoBehaviour
         GUILayout.EndVertical();
     }
 
-    private void DisplayUtilitySystem(UtilitySystem.Runtime.UtilitySystem system, string name)
+    private void DisplayUtilitySystem(UtilitySystem system, string name)
     {
         GUILayout.Label(name);
         GUILayout.BeginHorizontal();
         GUILayout.BeginVertical("box");
-        foreach (var stat in system.GetInputs())
+        foreach (var stat in system.GetInputs().Values)
         {
             GUILayout.BeginHorizontal();
             GUILayout.Label(stat.Name);
@@ -58,7 +52,7 @@ public class UtilitySystems : MonoBehaviour
         GUILayout.EndVertical();
 
         GUILayout.BeginVertical("box");
-        foreach (var utility in system.GetUtilities())
+        foreach (var utility in system.GetUtilities().Values)
         {
             GUILayout.BeginHorizontal();
             GUILayout.Label(utility.Name);
